@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amity University AI-Grievance Management System</title>
+    <meta
+      name="description"
+      content="Intelligent Campus Incident Triage, Dynamic Location Routing & Real-Time SLA Monitoring"
+    />
+    <meta property="og:title" content="Amity University AI-Grievance Management System" />
+    <meta
+      property="og:description"
+      content="Intelligent Campus Incident Triage, Dynamic Location Routing & Real-Time SLA Monitoring"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Zero-Dependency Vanilla Stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Ambient Midnight Glow Background -->
+    <div class="ambient-canvas" aria-hidden="true">
+      <div class="ambient-orb ambient-orb--cyan"></div>
+      <div class="ambient-orb ambient-orb--crimson"></div>
+      <div class="ambient-grid"></div>
+    </div>
+
+    <div class="app-wrapper">
+      <!-- ==================================================================
+           SCREEN 1: LANDING & ROLE SELECTION ("Who you are?")
+           ================================================================== -->
+      <main id="screen-landing" class="screen landing-screen active">
+        <header class="landing-header">
+          <h2
+            class="landing-university-tag"
+            style="letter-spacing: 2px; color: #94a3b8; font-weight: 700; text-align: center; margin-bottom: 4px;"
+          >
+            AMITY UNIVERSITY
+          </h2>
+          <h1
+            class="landing-main-title"
+            style="letter-spacing: 1px; font-weight: 800; text-align: center; background: linear-gradient(135deg, #38bdf8, #818cf8, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"
+          >
+            AI-GRIEVANCE MANAGEMENT SYSTEM
+          </h1>
+          <p class="landing-subtitle">
+            Intelligent Campus Incident Triage, Dynamic Location Routing &amp; Real-Time SLA Monitoring
+          </p>
+        </header>
+
+        <h3 class="role-prompt-heading">Who you are? Select Your Portal</h3>
+
+        <section class="role-grid" aria-label="Portal Role Selection">
+          <!-- Card 1: Student Portal -->
+          <button
+            type="button"
+            id="role-card-student"
+            class="glass-card glass-card--interactive role-card role-card--student"
+          >
+            <div class="role-card__top">
+              <div class="role-card__icon-row">
+                <span class="role-card__icon" aria-hidden="true">🎓</span>
+                <span class="role-card__kicker">STUDENT ACCESS</span>
+              </div>
+              <h3 class="role-card__title">🎓 Student Portal</h3>
+              <p class="role-card__desc">
+                File complaints, view AI SLA estimate &amp; track live resolution stopwatch
+              </p>
+              <div class="role-card__meta">
+                <span>Bilingual Hindi/English NLP</span>
+                <span>·</span>
+                <span>Dynamic Zone Routing</span>
+                <span>·</span>
+                <span>Live SLA Timer</span>
+              </div>
+            </div>
+            <div class="role-card__cta">
+              <span>Enter Student Portal</span>
+              <span aria-hidden="true">→</span>
+            </div>
+          </button>
+
+          <!-- Card 2: Admin & Authority Desk -->
+          <button
+            type="button"
+            id="role-card-admin"
+            class="glass-card glass-card--admin-interactive role-card role-card--admin"
+          >
+            <div class="role-card__top">
+              <div class="role-card__icon-row">
+                <span class="role-card__icon" aria-hidden="true">🛡️</span>
+                <span class="role-card__kicker">PROCTOR &amp; WARDEN</span>
+              </div>
+              <h3 class="role-card__title">🛡️ Admin &amp; Authority Desk</h3>
+              <p class="role-card__desc">
+                Warden &amp; Proctor Command Center. AI priority scoring 1-10 &amp; instant emergency dispatch
+              </p>
+              <div class="role-card__meta">
+                <span>10/10 SOS Dispatch</span>
+                <span>·</span>
+                <span>Severity Ranking 1–10</span>
+                <span>·</span>
+                <span>Cross-Tab Resolution Sync</span>
+              </div>
+            </div>
+            <div class="role-card__cta">
+              <span>Enter Authority Command Center</span>
+              <span aria-hidden="true">→</span>
+            </div>
+          </button>
+        </section>
+
+        <footer class="landing-footer-note">
+          <span>100% Client-Side Reactive Persistence</span>
+          <span>·</span>
+          <span>Open Student &amp; Admin portals in two tabs to observe instant real-time resolution sync</span>
+        </footer>
+      </main>
+
+      <!-- ==================================================================
+           SCREEN 2: AUTHENTICATION ENGINE (DYNAMIC USER BINDING)
+           ================================================================== -->
+      <section id="screen-auth" class="screen auth-screen" aria-labelledby="auth-title">
+        <div class="glass-card auth-modal">
+          <div class="auth-top-bar">
+            <button type="button" id="auth-back-btn" class="btn-back">
+              ← Back
+            </button>
+            <span id="auth-role-indicator" class="auth-role-indicator">
+              STUDENT PORTAL ACCESS
+            </span>
+          </div>
+
+          <h2 id="auth-title" class="auth-title">Student Identity Verification</h2>
+          <p id="auth-subtitle" class="auth-subtitle">
+            Sign in with your 13-character Amity Enrollment ID and Date of Birth.
+          </p>
+
+          <form id="auth-form" class="auth-form" novalidate>
+            <!-- Student Login Fields -->
+            <div id="auth-student-fields" style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="form-group">
+                <label class="form-label" for="student-login-id">
+                  <span>Enrollment ID</span>
+                  <span class="form-label__hint">Format: A + 12 digits</span>
+                </label>
+                <input
+                  type="text"
+                  id="student-login-id"
+                  class="form-input mono-num"
+                  placeholder="A368302748394"
+                  maxlength="13"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="student-login-dob">
+                  <span>Password / Date of Birth</span>
+                  <span class="form-label__hint">Format: DD-MM-YYYY</span>
+                </label>
+                <input
+                  type="text"
+                  id="student-login-dob"
+                  class="form-input mono-num"
+                  placeholder="06-04-1800"
+                  maxlength="10"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="student-login-name">
+                  <span>Full Name</span>
+                  <span class="form-label__hint">Auto-saved to profile</span>
+                </label>
+                <input
+                  type="text"
+                  id="student-login-name"
+                  class="form-input"
+                  placeholder="e.g., Aarav Sharma"
+                  autocomplete="name"
+                />
+              </div>
+            </div>
+
+            <!-- Admin Login Fields -->
+            <div id="auth-admin-fields" style="display: none; flex-direction: column; gap: 16px;">
+              <div class="form-group">
+                <label class="form-label" for="admin-login-user">
+                  <span>Admin Username</span>
+                  <span class="form-label__hint">Proctor ID</span>
+                </label>
+                <input
+                  type="text"
+                  id="admin-login-user"
+                  class="form-input mono-num"
+                  placeholder="adminAUJ"
+                  autocomplete="username"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="admin-login-pass">
+                  <span>Admin Password</span>
+                  <span class="form-label__hint">Security Key</span>
+                </label>
+                <input
+                  type="password"
+                  id="admin-login-pass"
+                  class="form-input mono-num"
+                  placeholder="•••••••••"
+                  autocomplete="current-password"
+                />
+              </div>
+            </div>
+
+            <div id="auth-error-box" class="auth-error-box" role="alert"></div>
+
+            <button type="submit" id="auth-submit-btn" class="btn-primary">
+              Access Student Grievance Desk →
+            </button>
+
+            <button type="button" id="auth-autofill-btn" class="btn-autofill">
+              ⚡ Autofill Demo Credentials
+            </button>
+
+            <div id="auth-info-box" class="auth-info-box">
+              <strong>Dynamic Account Binding:</strong> Your Enrollment ID binds permanently to your Password/DOB upon first login.
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           SCREEN 3: STUDENT DESK, DYNAMIC LOCATION & LIFECYCLE TIMER
+           ================================================================== -->
+      <section id="screen-student" class="screen">
+        <!-- Top Navigation -->
+        <header class="glass-card portal-header">
+          <div class="portal-header__brand">
+            <span class="portal-header__uni">AMITY UNIVERSITY · STUDENT GRIEVANCE DESK</span>
+            <h2 class="portal-header__title">Intelligent Incident Filing &amp; Live SLA Tracker</h2>
+          </div>
+
+          <div class="portal-header__user-zone">
+            <div class="user-identity-text">
+              <span id="student-header-name" class="user-identity-name">Aarav Sharma</span>
+              <span>·</span>
+              <span id="student-header-id" class="user-enrollment-id">A368302748394</span>
+            </div>
+            <button type="button" id="student-logout-btn" class="btn-logout">
+              Logout 🚪
+            </button>
+          </div>
+        </header>
+
+        <!-- Persistent Resolution Timer Banner -->
+        <section
+          id="student-pipeline-banner"
+          class="pipeline-banner"
+          aria-live="polite"
+        >
+          <div class="pipeline-banner__row">
+            <div class="pipeline-banner__status-group">
+              <div id="pipeline-status-label" class="pipeline-banner__status-label">
+                ACTIVE IN-RESOLUTION PIPELINE (PENDING ⏳)
+              </div>
+              <div id="pipeline-meta-info" class="pipeline-banner__meta">
+                <span><strong>Expected SLA:</strong> 0-15 mins</span>
+              </div>
+            </div>
+
+            <div class="pipeline-banner__clock-box">
+              <div id="pipeline-clock-value" class="pipeline-banner__clock-value">
+                00:00:00
+              </div>
+              <div id="pipeline-clock-caption" class="pipeline-banner__clock-caption">
+                Live Resolution Stopwatch (HH:MM:SS)
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Two-Column Student Workspace -->
+        <div class="student-workspace-grid">
+          <!-- Left Column: Lodge Grievance Form -->
+          <div class="glass-card panel-card">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">Lodge Campus Grievance</h3>
+                <p class="panel-subtitle">
+                  Dynamic location routing &amp; bilingual Hindi/English AI SLA estimation
+                </p>
+              </div>
+              <span
+                id="student-sla-estimate-preview"
+                class="mono-num"
+                style="font-size: 0.82rem; color: var(--emerald); font-weight: 700;"
+              >
+                Expected SLA: 0-15 mins
+              </span>
+            </div>
+
+            <form id="student-grievance-form" class="auth-form">
+              <!-- 1. Student Name & Locked Enrollment Number -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="grievance-student-name">
+                    <span>Student Name</span>
+                    <span class="form-label__hint">Editable</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="grievance-student-name"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="grievance-enrollment-id">
+                    <span>Enrollment Number</span>
+                    <span class="form-label__hint">Locked Session</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="grievance-enrollment-id"
+                    class="form-input mono-num"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <!-- 2. Residing in Campus Hostel? -->
+              <div class="form-group">
+                <label class="form-label" for="grievance-hostel-residing">
+                  <span>Residing in Campus Hostel?</span>
+                </label>
+                <select id="grievance-hostel-residing" class="form-select">
+                  <option value="No">No (Day Scholar)</option>
+                  <option value="Yes">Yes (Hostel Resident)</option>
+                </select>
+              </div>
+
+              <!-- Dynamic Hostel Wing & Room Fields -->
+              <div id="dynamic-hostel-fields" class="dynamic-section">
+                <div class="dynamic-section__title">Hostel Residency Details</div>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-hostel-wing">
+                      <span>Hostel Wing</span>
+                    </label>
+                    <select id="grievance-hostel-wing" class="form-select">
+                      <option value="Boys Hostel">Boys Hostel</option>
+                      <option value="Girls Hostel">Girls Hostel</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-hostel-room">
+                      <span>Hostel Room No.</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="grievance-hostel-room"
+                      class="form-input"
+                      placeholder="e.g., Room B-304"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Category Selector -->
+              <div class="form-group">
+                <label class="form-label" for="grievance-category">
+                  <span>Incident Category</span>
+                  <span class="form-label__hint">Routes location &amp; SLA engine</span>
+                </label>
+                <select id="grievance-category" class="form-select">
+                  <option value="Fire & Safety">Fire &amp; Safety</option>
+                  <option value="Fight & Security">Fight &amp; Security</option>
+                  <option value="Electricity">Electricity</option>
+                  <option value="Water Supply">Water Supply</option>
+                  <option value="Exam & Academics">Exam &amp; Academics</option>
+                  <option value="Mess & Canteen">Mess &amp; Canteen</option>
+                  <option value="Hostel Facility">Hostel Facility</option>
+                  <option value="Library & IT">Library &amp; IT</option>
+                  <option value="Ragging & Bullying">Ragging &amp; Bullying</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- 4A. Dynamic Course Fields (Exam & Academics) -->
+              <div id="dynamic-academic-fields" class="dynamic-section">
+                <div class="dynamic-section__title">Academic Program &amp; Section Routing</div>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-course">
+                      <span>Course Selection</span>
+                    </label>
+                    <select id="grievance-course" class="form-select"></select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-class-section">
+                      <span>Class / Section / Semester</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="grievance-class-section"
+                      class="form-input"
+                      placeholder="e.g., Semester 3 / Section B"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4B. Dynamic Mess & Canteen Fields -->
+              <div id="dynamic-canteen-fields" class="dynamic-section">
+                <div class="dynamic-section__title">Food Court &amp; Canteen Outlet</div>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-canteen-outlet">
+                      <span>Canteen Outlet</span>
+                    </label>
+                    <select id="grievance-canteen-outlet" class="form-select">
+                      <option value="Wonders Food">Wonders Food</option>
+                      <option value="Big Bites">Big Bites</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-canteen-locked-loc">
+                      <span>Designated Zone</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="grievance-canteen-locked-loc"
+                      class="form-input"
+                      value="Ground Floor Food Court (No additional location needed)"
+                      readonly
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4C. Dynamic Other Category (Pure NLP Textual Context Mode) -->
+              <div id="dynamic-other-nlp-fields" class="dynamic-section">
+                <div class="nlp-mode-notice">
+                  <strong>Pure NLP Textual Context Mode Active:</strong> Building &amp; zone selectors are hidden. Our AI classifier will evaluate urgency and routing directly from your complaint description below.
+                </div>
+              </div>
+
+              <!-- 4D. Standard Campus Location Zones (All Other Categories) -->
+              <div id="dynamic-standard-location-fields" class="dynamic-section visible">
+                <div class="dynamic-section__title">Campus Zone &amp; Floor Pinpoint</div>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-campus-zone">
+                      <span>Campus Location Zone</span>
+                    </label>
+                    <select id="grievance-campus-zone" class="form-select"></select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="grievance-floor">
+                      <span>Floor Selection</span>
+                    </label>
+                    <select id="grievance-floor" class="form-select">
+                      <option value="Ground Floor">Ground Floor</option>
+                      <option value="Floor 1">Floor 1</option>
+                      <option value="Floor 2">Floor 2</option>
+                      <option value="Floor 3">Floor 3</option>
+                      <option value="Floor 4">Floor 4</option>
+                      <option value="Floor 5">Floor 5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="grievance-spot-specifics">
+                    <span>Near Room / Spot Specifics</span>
+                    <span class="form-label__hint">Landmark or room number</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="grievance-spot-specifics"
+                    class="form-input"
+                    placeholder="e.g., Near Lab 204 / Main Staircase"
+                  />
+                </div>
+              </div>
+
+              <!-- 5. Description & Bilingual Suggested Keyword Chips -->
+              <div class="form-group">
+                <label class="form-label" for="grievance-description">
+                  <span>Incident Description (English / Hindi / Hinglish)</span>
+                  <span class="form-label__hint">Evaluated by AI SLA Classifier</span>
+                </label>
+                <textarea
+                  id="grievance-description"
+                  class="form-textarea"
+                  placeholder="Describe the issue clearly or tap suggested bilingual keyword tags below..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="keyword-chips-block">
+                <span class="keyword-chips-label">
+                  Suggested Bilingual Keyword Tags (Click to append):
+                </span>
+                <div id="keyword-chips-container" class="keyword-chips-wrap"></div>
+              </div>
+
+              <button type="submit" class="btn-primary">
+                🚀 Submit Grievance &amp; Start Resolution Stopwatch
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: My Grievance History Dossier -->
+          <div class="glass-card panel-card">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title">My Grievance History Dossier</h3>
+                <p class="panel-subtitle">
+                  Live resolution timers &amp; verified completion records for your Enrollment ID
+                </p>
+              </div>
+              <span
+                id="student-dossier-count"
+                class="mono-num"
+                style="font-size: 0.82rem; color: var(--cyan); font-weight: 700;"
+              >
+                0 Records
+              </span>
+            </div>
+
+            <div id="student-dossier-list" class="dossier-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           SCREEN 4: ADMIN & WARDEN COMMAND CENTER
+           ================================================================== -->
+      <section id="screen-admin" class="screen">
+        <!-- Top Navigation -->
+        <header class="glass-card portal-header">
+          <div class="portal-header__brand">
+            <span class="portal-header__uni">AMITY UNIVERSITY · PROCTOR &amp; WARDEN COMMAND CENTER</span>
+            <h2 class="portal-header__title">AI Priority Scoring (1–10) &amp; Instant Emergency Dispatch</h2>
+          </div>
+
+          <div class="portal-header__user-zone">
+            <div class="user-identity-text">
+              <span class="user-identity-name">Chief Warden Desk</span>
+              <span>·</span>
+              <span class="user-enrollment-id" style="color: #fca5a5;">adminAUJ</span>
+            </div>
+            <button type="button" id="admin-logout-btn" class="btn-logout">
+              Logout 🚪
+            </button>
+          </div>
+        </header>
+
+        <!-- Prominent Pulsing Red SOS Alert Banner -->
+        <section id="admin-sos-banner" class="sos-alert-banner" aria-live="assertive">
+          <div class="sos-alert-banner__header">
+            <div>
+              <h3 id="admin-sos-banner-count" class="sos-alert-banner__title">
+                🚨 ACTIVE CRITICAL SOS EMERGENCIES (10/10 SCORE — IMMEDIATE DISPATCH REQUIRED)
+              </h3>
+              <p class="sos-alert-banner__subtitle">
+                Life-safety or critical hazard detected by AI NLP Heuristic Engine. Target SLA: 0–15 mins.
+              </p>
+            </div>
+          </div>
+          <div id="admin-sos-dispatch-grid" class="sos-dispatch-grid"></div>
+        </section>
+
+        <!-- Analytics Counter Bar -->
+        <section class="analytics-bar" aria-label="Incident Analytics Summary">
+          <div class="glass-card stat-tile">
+            <span class="stat-tile__label">Total Complaints</span>
+            <span id="stat-total-count" class="stat-tile__value">0</span>
+          </div>
+
+          <div class="glass-card stat-tile stat-tile--sos">
+            <span class="stat-tile__label">🚨 SOS Emergencies (10/10)</span>
+            <span id="stat-sos-count" class="stat-tile__value">0</span>
+          </div>
+
+          <div class="glass-card stat-tile stat-tile--high">
+            <span class="stat-tile__label">High Severity (7-9)</span>
+            <span id="stat-high-count" class="stat-tile__value">0</span>
+          </div>
+
+          <div class="glass-card stat-tile stat-tile--pending">
+            <span class="stat-tile__label">Pending Action</span>
+            <span id="stat-pending-count" class="stat-tile__value">0</span>
+          </div>
+
+          <div class="glass-card stat-tile stat-tile--resolved">
+            <span class="stat-tile__label">Resolved Archive</span>
+            <span id="stat-resolved-count" class="stat-tile__value">0</span>
+          </div>
+        </section>
+
+        <!-- Category Filter Tabs & Search Controls -->
+        <section class="glass-card admin-controls-panel">
+          <div class="admin-search-row">
+            <input
+              type="search"
+              id="admin-search-input"
+              class="form-input admin-search-input"
+              placeholder="Search by Enrollment ID, student name, location zone, or keyword..."
+            />
+            <div class="admin-utility-btns">
+              <button type="button" id="admin-seed-btn" class="btn-secondary">
+                🧪 Seed Demo Incidents
+              </button>
+            </div>
+          </div>
+
+          <div id="admin-filter-tabs" class="filter-tabs-scroll" role="tablist"></div>
+        </section>
+
+        <!-- Ranked Complaint Cards Feed -->
+        <section id="admin-complaints-feed" class="admin-feed-list" aria-live="polite"></section>
+      </section>
+    </div>
+
+    <!-- Floating Toast Notification Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Zero-Dependency Modular ES6+ Application Script -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

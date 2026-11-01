@@ -1,0 +1,6 @@
+{
+  "name": "Amity University AI-Grievance Management System",
+  "description": "Intelligent Campus Incident Triage, Dynamic Location Routing & Real-Time SLA Monitoring",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
